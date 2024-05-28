@@ -1,0 +1,183 @@
+// .bg-image {
+//     background-image: url('../../../assets/images/login-backgorund-image.jfif');
+//     background-size: cover;
+//     min-height: 100vh;
+//   }
+
+// label {
+//   font-family: 'Readex Pro', sans-serif;
+// }
+
+*{
+  font-family: 'Readex Pro', sans-serif;
+}
+
+.main {
+  background-color: #F3EFE0;
+  height: 90vh;
+}
+
+.img{
+  height: 90vh;
+}
+
+.signup-container{
+  background-color: white;
+  height:90%;
+  width: 40%;
+  border: 1px solid black;
+}
+
+.login-container{
+  background-color: white;
+  height:50%;
+  width: 40%;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.group {
+  width: 60%;
+  height: 3rem;
+  margin-bottom: 2.5rem;
+  //display: flex;
+  //flex-direction: column;
+}
+
+#msg {
+  margin-top: .25rem;
+}
+
+.group-input {
+  width: 70%;
+  height: 3.25rem;
+  margin-bottom: 2rem;
+}
+
+.headerl {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.input-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+input {
+  border-radius: inherit;
+  margin:  0;
+  background-color: #F5F4F4;
+  width: 100%;
+  height: 80%;
+  border: none;
+  padding: 1rem;
+  //padding: 6px 8px;
+}
+
+.header {
+  margin-top: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+h3{
+  font-family: "Brawler", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.btn-submit {
+  background-color: #F1D2AE;
+  font-family: "Brawler", serif;
+  font-weight: 400;
+  font-style:normal;
+  height: 2rem;
+  width: 5.5rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+
+}
+.btn-submits {
+  background-color: #F1D2AE;
+  font-family: "Brawler", serif;
+  font-weight: 400;
+  font-style:normal;
+  height: 2.5rem;
+  width: 6rem;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+
+}
+
+p {
+  font-family: "Brawler", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: .75em;
+  text-align: center;
+
+}
+
+.msg1 {
+  margin-top: 3rem;
+}
+
+.msg {
+  margin-top: 1rem;
+  font-size: 1em;
+}
+
+u {
+  cursor: pointer;
+}
+
+#footer {
+  margin-top: 1rem;
+  font-size: 1em;
+}
+#footers {
+  margin-top: 3rem;
+  font-size: 1em;
+}
+
+
+#footer-p {
+  margin-top: .15rem;
+  font-size: .95em;
+}
+#footer-l {
+  //margin-top: .1rem;
+  font-size: 1em;
+}
+
+.container {
+  display: flex;
+  gap: .75rem;
+}
+
+#otp {
+
+  border: 1px solid black;
+}
+
+#msg-pass {
+  margin-top: 0;
+  font-size: .65em;
+}
+
+#msg-pas{
+  font-size: .70em;
+}

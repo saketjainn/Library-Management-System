@@ -1,0 +1,197 @@
+.content {
+    background-color: white;
+    height: 90.5vh;
+    width: 77vw;
+    padding: 1rem 0;
+   // border: 1px solid black;
+}
+
+.up {
+    height: 49%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    width: 97%;
+    margin: auto;
+    gap: 1.5rem;
+    //border: 3px solid green;
+}
+
+.down {
+    height: 49%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    width: 97%;
+    margin: 1.5rem auto;
+    gap: 1.5rem;
+    //border: 3px solid green;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 15%;
+   // background-color: #427aa1;
+    gap: 1.5rem;
+    //border: 1px solid black;
+}
+
+.fav-authors {
+    height: 100%;
+    width: 50%;
+    background-color: #ffffff;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 .5rem;
+}   
+
+.fav-genre-split {
+    height: 100%;
+    width: 32%;
+    background-color: #ffffff;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notifications {
+    width: 100%;
+    height: 32%;
+    border: 1px solid black; 
+}
+
+.borrowed-books {
+    // background-color: #091540;
+    width: 100%;
+    height: 32%;
+    border: 1px solid black; 
+}
+
+.fine-amount-due {
+    //background-color: #091540;
+    width: 100%;
+    height: 32%;
+    border: 1px solid black; 
+}
+
+.fav-books {
+    height: 100%;
+    width: 48%;
+    border: 1px solid black; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 .5rem;
+}
+
+.reports {
+    height: 100%;
+    width: 50%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.date-picker {
+    //xmargin-top: 1%;
+    width: 98%;
+    height: 35%;
+   //border: 1px solid black;
+    display: flex;
+    //justify-content: space-between;
+    align-items: end;
+    padding: .25rem;
+}
+
+#dates {
+    width: 95%;
+    height: 50%;
+    display: flex;
+    padding: 1rem;
+    //border: 1px solid black;
+    margin-bottom: 0;
+    //gap: 45%;
+    //align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+#date-input {
+    margin-left: 1rem;
+    padding-left: 0;
+}
+
+.dropdown-button {
+    margin-top: 1%;
+width: 98%;
+height: 59%;
+//border: 1px solid black;
+display: flex;
+padding: 1rem;
+// justify-content: center;
+// align-items: center;
+}
+
+
+.dropdown {
+    width: 100%;
+    height: 3rem;
+    display: flex;
+    gap:5%;
+    //border: 1px solid black;
+}
+
+#report
+{
+    width: 75%;
+    height: 100%;
+    padding-left: 1rem;
+}
+
+#report-btn{
+    width: 14%;
+    height: 100%;
+}
+
+#user-genre-pie {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto ;
+}
+
+#user-fav-books {
+    height: 100%;
+    margin: 0;
+}
+
+#user-fav-authors {
+    height: 100%;
+    margin:  0; 
+}
+
+.stat {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-data {
+    height: 100%;
+    //margin : 0;
+    display: flex;
+    flex-direction: column;
+    //justify-content: space;
+    align-items: center;
+    
+  }

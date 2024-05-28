@@ -1,0 +1,392 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Jockey+One&family=Readex+Pro:wght@160..700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- <div class="main d-flex justify-content-center align-items-center  bg-image rounded-4 content">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="card p-4"
+          style="width: 700px; margin-left: 40px; background-color: #F1D2AE; color: black; font-size: 18px;">
+        <div class="row mb-4">
+            <div class="col">
+                <label>Title:</label>
+                <input type="text" formControlName="title" class="form-control mt-3" />
+              <span class="text-muted" *ngIf="!bookForm.controls['title'].valid &&
+                 bookForm.controls['title']?.touched" class="text-danger" >
+              Title is required
+            </span>
+            </div>
+
+            <div class="col">
+                <label>Author:</label>
+                <input type="text" formControlName="author" class="form-control mt-3" />
+              <span class="text-muted" *ngIf="!bookForm.controls['author'].valid &&
+                 bookForm.controls['author']?.touched" class="text-danger" >
+              Author is required
+            </span>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col">
+                <label>ISBN:</label>
+                <input type="text" formControlName="isbn" class="form-control mt-3" />
+              <span class="text-muted" *ngIf="!bookForm.controls['isbn'].valid &&
+                 bookForm.controls['isbn']?.touched" class="text-danger" >
+              ISBN must be 13 characters long
+            </span>
+            </div>
+            <div class="col">
+                <label>Print Year:</label>
+                <input type="number" formControlName="printYear" class="form-control mt-3" />
+              <span class="text-muted" *ngIf="!bookForm.controls['printYear'].valid &&
+                 bookForm.controls['printYear']?.touched" class="text-danger" >
+              Enter a valid year
+            </span>
+            </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col">
+            <label for="genre">Genre:</label>
+            <select class="form-control mt-3" formControlName="genre" id="genre">
+              <option value="">Select Genre</option>  <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+            </select>
+            <span class="text-muted" *ngIf="!bookForm.controls['genre'].valid &&
+                 bookForm.controls['genre']?.touched" class="text-danger" >
+              Genre is required
+            </span>
+          </div>
+
+          <div class="col">
+                <label>Quantity Available:</label>
+                <input type="number" formControlName="quantityAvailable" class="form-control mt-3" />
+            <span class="text-muted" *ngIf="!bookForm.controls['quantityAvailable'].valid &&
+                 bookForm.controls['quantityAvailable']?.touched" class="text-danger" >
+              Quantity shiuld be greater than 0 and less than 100
+            </span>
+            </div>
+        </div>
+
+            <div class="col">
+                <label>Publisher ID:</label>
+                <input type="number" formControlName="publisherId" class="form-control mt-3" />
+              <span class="text-muted" *ngIf="!bookForm.controls['publisherId'].valid &&
+                 bookForm.controls['publisherId']?.touched" class="text-danger" >
+              Publisher Id is required
+            </span>
+            </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" [disabled]="!bookForm.valid" class="btn btn-warning" >Submit</button>
+        </div>
+    </form>
+</div> -->
+
+<div class="rounded-4 content">
+  <div class="heading">
+    <h1>Add Book</h1>
+  </div>
+  <div class="main rounded-4">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="form-border">
+        <div class="hor first">
+          <div class="group" id="wide">
+            <input
+              type="text"
+              name=""
+              placeholder="Title"
+              class="rounded-4"
+              formControlName="title"
+            />
+            <div
+              *ngIf="
+                !bookForm.controls['title'].valid &&
+                bookForm.controls['title']?.touched
+              "
+              class="text-danger"
+            >
+              <p id="mesg" *ngIf="bookForm.get('title')?.errors?.['required']">
+                Title is required
+              </p>
+              <p id="mesg" *ngIf="bookForm.get('title')?.errors?.['pattern']">
+                Title should be betwenn 3-50 characters
+              </p>
+            </div>
+          </div>
+
+          <div class="group">
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Print Year"
+              class="rounded-4"
+              formControlName="printYear"
+            />
+            <div
+              *ngIf="
+                !bookForm.controls['printYear'].valid &&
+                bookForm.controls['printYear']?.touched
+              "
+              class="text-danger"
+            >
+              <p
+                id="mesg"
+                *ngIf="bookForm.get('printYear')?.errors?.['required']"
+              >
+                Print Year is required
+              </p>
+              <p
+                id="mesg"
+                *ngIf="bookForm.get('printYear')?.errors?.['pattern']"
+              >
+                Invalid year format
+              </p>
+              <p id="mesg" *ngIf="bookForm.get('printYear')?.errors?.['max']">
+                Cannot exceed current year
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hor">
+          <div class="group" id="wide">
+            <input
+              type="text"
+              name=""
+              placeholder="Author"
+              class="rounded-4"
+              formControlName="author"
+            />
+            <div
+              *ngIf="
+                !bookForm.controls['author'].valid &&
+                bookForm.controls['author']?.touched
+              "
+              class="text-danger"
+            >
+              <p id="mesg" *ngIf="bookForm.get('author')?.errors?.['required']">
+                Author Name is required
+              </p>
+              <p id="mesg" *ngIf="bookForm.get('author')?.errors?.['pattern']">
+                Author name should be betwenn 3-50 chaaracters
+              </p>
+            </div>
+          </div>
+
+          <div class="group">
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Quantity"
+              class="rounded-4"
+              formControlName="quantityAvailable"
+              min="1"
+            />
+            <div
+              *ngIf="
+                !bookForm.controls['quantityAvailable'].valid &&
+                bookForm.controls['quantityAvailable']?.touched
+              "
+              class="text-danger"
+            >
+              <p
+                id="mesg"
+                *ngIf="bookForm.get('quantityAvailable')?.errors?.['required']"
+              >
+                Quantity is required
+              </p>
+              <p
+                id="mesg"
+                *ngIf="bookForm.get('quantityAvailable')?.errors?.['pattern']"
+              >
+                Quantity should be non-negative whole number
+              </p>
+              <p
+                id="mesg"
+                *ngIf="bookForm.get('quantityAvailable')?.errors?.['max']"
+              >
+                Cannot add more than 100 at a time
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="hor-pub" id="isbn">
+          <div class="group" id="wide-p">
+            <input
+              type="text"
+              name="wide"
+              placeholder="ISBN"
+              class="rounded-4"
+              formControlName="isbn"
+            />
+            <div
+              *ngIf="
+                !bookForm.controls['isbn'].valid &&
+                bookForm.controls['isbn']?.touched
+              "
+              class="text-danger"
+            >
+              <p id="mesg" *ngIf="bookForm.get('isbn')?.errors?.['required']">
+                ISBN is required
+              </p>
+              <p id="mesg" *ngIf="bookForm.get('isbn')?.errors?.['pattern']">
+                ISBN should be either 10 or 13 digits
+              </p>
+            </div>
+          </div>
+
+          <div class="group" id="pub">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              id="pub-input"
+              class="rounded-4"
+              formControlName="publisherId"
+            >
+              <option value="" selected>Publisher </option>
+              <option *ngFor="let pub of publishers" [value]="pub.publisherId">
+                {{ pub.name }}
+              </option>
+            </select>
+            <!-- <input
+              type="text"
+              name=""
+              id="pub-input"
+              placeholder="Publisher Id"
+              class="rounded-4"
+              formControlName="publisherId"
+            /> -->
+
+            <div
+              *ngIf="
+                !bookForm.controls['publisherId'].valid &&
+                bookForm.controls['publisherId']?.touched
+              "
+              class="text-danger"
+            >
+              <p
+                id="mesg"
+                *ngIf="bookForm.get('publisherId')?.errors?.['required']"
+              >
+                Publisher is required
+              </p>
+              <!-- <p
+                id="mesg"
+                *ngIf="bookForm.get('publisherId')?.errors?.['pattern']"
+              >
+                Publisher Id should be non-negative whole number
+              </p> -->
+            </div>
+          </div>
+          <i
+            class="fa-solid fa-eye"
+            id="eye"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          ></i>
+        </div>
+        <div class="hor single">
+          <div class="group" id="wide">
+            <!-- <input
+              type="text"
+              name=""
+              placeholder="Genre"
+              class="rounded-4 genre"
+              formControlName="genre"
+            /> -->
+            <select class="rounded-4" formControlName="genre" id="genre">
+              <option value="" selected>Select Genre</option>
+              <option *ngFor="let genre of genres" [value]="genre">
+                {{ genre }}
+              </option>
+            </select>
+
+            <p
+              id="genre-msg"
+              class="text-muted"
+              *ngIf="
+                !bookForm.controls['genre'].valid &&
+                bookForm.controls['genre']?.touched
+              "
+              class="text-danger"
+            >
+              Genre is required
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="down">
+        <button id="clear" class="btn btn-lg" (click)="resetForm()">
+          Clear
+        </button>
+        <button
+          type="submit"
+          id="save"
+          class="btn btn-lg btn-success"
+          [disabled]="!bookForm.valid"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title fs-5" id="exampleModalLabel">Publishers List</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+
+              <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let publisher of publishers">
+            <td>{{ publisher.publisherId }}</td>
+            <td>{{ publisher.name }}</td>
+            <td>{{ publisher.email }}</td>
+            <td>{{ publisher.phoneNo }}</td>
+          </tbody>
+        </table>
+      </div>
+      <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+    </div>
+  </div>
+</div>

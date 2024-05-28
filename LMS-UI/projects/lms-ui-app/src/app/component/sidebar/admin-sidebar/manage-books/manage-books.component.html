@@ -1,0 +1,123 @@
+<div class="rounded-4 content">
+  <div class="input-group mt-2">
+    <select
+      class="form-control-sm me-4 form-select-sm rounded-3"
+      [(ngModel)]="selectedFilter"
+    >
+      <option value="title" class="rounded-3" selected>Search by Title</option>
+      <option value="author" class="rounded-3">Search by Author</option>
+      <option value="genre" class="rounded-3">Search by Genre</option>
+    </select>
+
+    <input
+      *ngIf="selectedFilter !== 'id'"
+      type="search"
+      class="rounded-4 form-control ms-2 me-2"
+      placeholder="Search..."
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="search()"
+      (input)="search()"
+    />
+
+    <button
+      class="btn btn-sm btn-primary rounded-3"
+      type="submit"
+      (click)="search()"
+    >
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+
+  <div class="no-data" *ngIf="books.length == 0">
+    <img src="../../../../../assets/images/no-data.png" alt="" class="" />
+
+    <!-- <button class="btn btn-primary rounded-4" id="explore" (click)="gotoExploreBooks()">Explore Books</button> -->
+  </div>
+
+  <div class="table-container" *ngIf="books && books.length > 0">
+    <!-- <h3>Books by Author</h3> -->
+    <table class="table table-hover table-striped-columns">
+      <thead>
+        <tr>
+          <th (click)="switchSortBy('bookId')">Book Id</th>
+          <th (click)="switchSortBy('title')">Title</th>
+          <th (click)="switchSortBy('author')">Author</th>
+          <th (click)="switchSortBy('genre')">Genre</th>
+          <th (click)="switchSortBy('printYear')">Print Year</th>
+          <th (click)="switchSortBy('quantityAvailable')">Quantity</th>
+          <th>Enable/Disable</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <ng-container *ngFor="let book of books">
+          <tr
+            [ngClass]="{
+              'table-success': book.active,
+              'table-danger': !book.active
+            }"
+          >
+            <td>{{ book.bookId }}</td>
+            <td id="title">{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre | removeUnderscore }}</td>
+            <td>{{ book.printYear }}</td>
+            <td>
+              <i
+                class="fa-solid fa-caret-down"
+                id="minus"
+                (click)="decrease(book)"
+              ></i>
+              <span id="qauntity">{{ book.quantityAvailable }}</span>
+              <!-- <i class="fa-solid fa-pen-to-square" id="edit" (click)="editQuantity(book)"></i> -->
+              <i
+                class="fa-solid fa-caret-up"
+                id="plus"
+                (click)="increase(book)"
+              ></i>
+            </td>
+            <td>
+              <button
+                type="button"
+                class="btn btn-sm"
+                [ngClass]="{
+                  'btn-danger': book.active,
+                  ' btn-success': !book.active
+                }"
+                (click)="toggleEnableDisable(book.bookId)"
+              >
+                {{ book.active ? "Disable" : "Enable" }}
+              </button>
+            </td>
+            <td>
+              <button
+                type="button"
+                (click)="openConfirmationDialog(book.bookId)"
+                class="btn btn-sm btn-dark"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <nav aria-label="Books Pagination">
+      <ul class="pagination pagination-sm justify-content-center">
+        <li class="page-item" [class.disabled]="pageNumber === 0">
+          <a class="page-link" (click)="prevPage()">Previous</a>
+        </li>
+        <li
+          class="page-item"
+          *ngFor="let page of totalPagesArray"
+          [class.active]="page - 1 === pageNumber"
+        >
+          <a class="page-link" (click)="goToPage(page - 1)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="pageNumber === totalPages - 1">
+          <a class="page-link" (click)="nextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,184 @@
+// .bg-image {
+//     background-image: url('../../../../../assets/images/login-backgorund-image.jfif');
+//     background-size: cover;
+//     min-height: 100vh;
+//   }
+
+.content {
+  background-color: white;
+  height: 90.5vh;
+  width: 77vw;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#isbn {
+  margin-left: 1.1rem;
+}
+.heading {
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.main {
+  width: 70%;
+  height: 95%;
+  margin: 1rem auto 2rem;  
+  // border: 2px solid black;
+  background-color: #ffffff;
+}
+
+.form-border {
+  width: 98%;
+  height: 80%;
+  // border: 1px solid black;
+  margin: 0 auto ;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  //justify-content: center;
+  gap: 3rem;
+}
+
+.hor {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.hor-pub {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  width: 100%;
+}
+
+#pub {
+  //margin-left: 12rem;
+  width: 20%;
+  margin-left: .85rem;
+}
+
+.first {
+  margin-top: 4rem;
+}
+.down {
+  width: 98%;
+  height: 20%;
+  // border: 1px solid black;
+  margin: 0 auto  ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+}
+form {
+  height: 100%;
+}
+input {
+  border: none;
+  width: 100%;
+  height: 2.5rem;
+  background-color: #F5F4F4;
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: black;
+
+}
+
+#pub-input {
+  width: 100%;
+  margin-left: 0;
+
+}
+select {
+  border: none;
+  width: 100%;
+  height: 2.5rem;
+  background-color: #F5F4F4;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: smaller;
+  color: black;
+
+}
+
+.group {
+  width: 20%;
+  height: 4rem;
+}
+
+#wide {
+  width: 40%;
+}
+#wide-p {
+  width: 40%;
+  margin-right: 13rem;
+}
+
+.single {
+  margin-left: .5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.genre {
+  margin-left: 7.5rem;
+}
+#genre {
+  margin-left: 6.25rem;
+}
+#genre-msg {
+  margin-left: 7rem;
+}
+#hide {
+  display: none;
+  background-color: #ffffff;
+  border: none;
+}
+
+button {
+  width: 8rem;
+  height: 2.5rem;
+  padding-bottom: 2.25rem;
+}
+
+#clear {
+  background-color: #ffffff;
+  color: black;
+  border: .5px solid black;
+}
+
+#save {
+  //margin-right: 5rem;
+}
+
+.title {
+  height: 4rem;
+  width: 20%;
+}
+
+::placeholder {
+  color: black;
+}
+
+p {
+  margin-left: 1rem;
+}
+
+#eye {
+  margin-left: 1rem;
+  margin-top: .5rem;
+  height: 70%;
+  // margin-left: 15rem;
+}

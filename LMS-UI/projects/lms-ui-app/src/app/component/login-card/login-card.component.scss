@@ -1,0 +1,37 @@
+
+  
+// 
+.background-image {
+    // background-image: url('456.jpg'); /* Replace 'your-image-url.jpg' with your image URL */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .card {
+   
+    background-color: rgba(255, 255, 255, 0.9); /* Example: semi-transparent white background */
+    /* Adjust card styling as needed */
+  }
+  .custom-submit-button {
+    background-color: #164863; /* Change the color to your desired color */
+    border-color: #50504e; /* Change the border color if needed */
+    color: #ffffff; /* Change the text color if needed */
+  }
+  
+  .custom-submit-button:hover {
+    background-color: #427D9D; /* Change the hover color to your desired color */
+    border-color: #50504e; /* Change the hover border color if needed */
+    transition: background-color 0.5s, color 0.5s;
+  
+}
+  
+Copy code
+.text-center {
+  text-align: center;
+}
+.fw-bold {
+  font-weight: bold;
+}

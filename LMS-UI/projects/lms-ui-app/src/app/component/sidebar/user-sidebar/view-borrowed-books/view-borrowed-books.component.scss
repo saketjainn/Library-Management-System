@@ -1,0 +1,76 @@
+// .container {
+//     margin-left: 500px;
+// }
+
+.input-group {
+    width: 90%;
+    margin: auto;
+   // margin-left: 3rem;
+}
+
+.no-data {
+  height: 100%;
+  //margin : 0;
+  display: flex;
+  flex-direction: column;
+  //justify-content: space;
+  align-items: center;
+  
+}
+
+img {
+  height: 80%;
+}
+#explore {
+  margin-top: 0;
+}
+.table-container {
+    width: 90%;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: smaller;
+    margin : 1.25rem auto 0;
+}
+
+th {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: larger;  
+}
+
+.table {
+    margin-top: 2.5rem;
+}
+
+.content {
+    background-color: white;
+    height: 90.5vh;
+    width: 77vw;
+    padding: 2rem 0;
+}
+
+nav {
+    position: fixed;
+    bottom: 8%; 
+    left: 57%; 
+    transform: translateX(-50%);
+    margin-bottom: 20px; 
+    cursor: pointer;
+  }
+
+  th,  td {
+    text-align: center;
+  }
+
+  #title {
+    width: 40%;
+  }
+
+  th {
+    font-size: 1.5em;
+  }
+  td {
+    font-size: 1.25em;
+  }

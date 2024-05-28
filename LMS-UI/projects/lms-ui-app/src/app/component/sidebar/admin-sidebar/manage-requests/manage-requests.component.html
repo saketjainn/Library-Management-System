@@ -1,0 +1,121 @@
+<!-- <div style="margin-left : 700px">
+    <button class="btn-warnig" (click)="getLast10BookRequests()">Latest Book Requests</button>
+</div> -->
+
+<div class="rounded-4 content">
+  <div class="input-group mt-2">
+    <span class="input-group-text">
+      <i class="bi bi-funnel"></i>
+    </span>
+    <select
+      class=" form-control-sm"
+      [(ngModel)]="selectedFilter"
+      (ngModelChange)="applyFilterOnChange()"
+    >
+      <option value="ALL" selected>ALL</option>
+      <option value="PENDING">Pending</option>
+      <option value="ACCEPTED">Accepted</option>
+      <option value="REJECTED">Rejected</option>
+    </select>
+    <input
+      type="search"
+      class="rounded-4 form-control mx-2"
+      placeholder="Search Username..."
+      (keyup.enter)="searchHelper()"
+      [(ngModel)]="searchTerm"
+      (input) = "searchHelper()"
+    />
+
+    <button class="btn btn-primary rounded-3" type="button" (click)="searchHelper()">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+
+  <div class="no-data" *ngIf="bookReqs.length == 0">
+    <img src="../../../../../assets/images/no-data.png" alt="" class="" />
+
+    <!-- <button class="btn btn-primary rounded-4" id="explore" (click)="gotoExploreBooks()">Explore Books</button> -->
+  </div>
+
+  <div class="table-container" *ngIf="bookReqs && bookReqs.length > 0">
+    <!-- <button
+      class="d-flex mt-5 justify-content-end btn btn-sm btn-danger"
+      (click)="close()"
+    >
+      X
+    </button> -->
+    <table class="table table-hover table-striped-columns">
+      <thead>
+        <tr>
+          <th>Request Id</th>
+          <th>Book Id</th>
+          <th>Username</th>
+          <th>Book Title</th>
+          <th>Request Date</th>
+          <th>Time (Weeks)</th>
+          <th>Status</th>
+          <th>Accept</th>
+          <th>Reject</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider"> 
+        <ng-container *ngFor="let bookReq of bookReqs">
+          <tr
+
+          >
+            <td>{{ bookReq.requestId }}</td>
+            <td>{{ bookReq.bookId }}</td>
+            <td>{{ bookReq.username }}</td>
+            <td id="title">{{ bookReq.bookTitle }}</td>
+            <td>{{ bookReq.requestDate | date : "MMM d, y, h:mm:ss a" }}</td>
+            <td>{{ bookReq.weeksRequested }}</td>
+            <td id="status-text" [ngClass]="{
+              'text-success': bookReq.status === 'ACCEPTED',
+              'text-danger': bookReq.status === 'REJECTED',
+              'text-warning-emphasis': bookReq.status === 'PENDING',
+            }">{{ bookReq.status }}</td>
+            <td>
+              <button
+                class="btn btn-sm btn-success"
+                (click)="acceptRequest(bookReq.requestId)"
+                [disabled]="
+                  bookReq.status === 'ACCEPTED' || bookReq.status === 'REJECTED'
+                "
+              >
+                <i class="bi bi-check-circle-fill"></i>
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="cancelRequest(bookReq.requestId)"
+                [disabled]="
+                  bookReq.status === 'ACCEPTED' || bookReq.status === 'REJECTED'
+                "
+              >
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <nav aria-label="Books Pagination" class="">
+      <ul class="pagination pagination-sm justify-content-center">
+        <li class="page-item" [class.disabled]="pageNumber === 0">
+          <a class="page-link" (click)="prevPage()">Previous</a>
+        </li>
+        <li
+          class="page-item"
+          *ngFor="let page of totalPagesArray"
+          [class.active]="page - 1 === pageNumber"
+        >
+          <a class="page-link" (click)="goToPage(page - 1)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="pageNumber === totalPages - 1">
+          <a class="page-link" (click)="nextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,86 @@
+<!-- <div style="margin-left : 700px">
+    <button class="btn-warnig" (click)="getLast10BookRequests()">Latest Book Requests</button>
+</div> -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  rel="stylesheet"
+/>
+
+<div class="rounded-4 content">
+  <div class="no-data" *ngIf="myRequests.length == 0">
+    <img
+      src="../../../../../assets/images/no-data.png"
+      alt=""
+      class=""
+    />
+
+    <button class="btn btn-primary rounded-4" id="explore" (click)="gotoExploreBooks()">Explore Books</button>
+  </div>
+  <div class="table-container" *ngIf="myRequests && myRequests.length > 0">
+    <table class="table table-striped-columns table-hover">
+      <thead>
+        <tr>
+          <th>Request Id</th>
+          <!-- <th>Book Id</th>
+            <th>Username</th> -->
+          <th>Book Title</th>
+          <th>Request Date</th>
+          <th>Time (Weeks)</th>
+          <th>Status</th>
+          <th>Cancel Request</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <ng-container *ngFor="let myRequest of myRequests">
+          <tr>
+            <td>{{ myRequest.requestId }}</td>
+            <!-- <td>{{ myRequest.bookId }}</td>
+              <td>{{ myRequest.username }}</td> -->
+            <td id="title">{{ myRequest.bookTitle }}</td>
+            <td>{{ myRequest.requestDate | date : "MMM d, y, h:mm:ss a" }}</td>
+            <td>{{ myRequest.weeksRequested }}</td>
+            <td
+              id="status-text"
+              [ngClass]="{
+                'text-success':  myRequest.status === 'ACCEPTED',
+                'text-danger': myRequest.status === 'REJECTED',
+                'text-warning-emphasis': myRequest.status === 'PENDING',
+                'text-primary': myRequest.status === 'CANCELLED',
+              }"
+            >
+              {{ myRequest.status }}
+            </td>
+            <td>
+              <button
+                [disabled]="myRequest.status != 'PENDING'"
+                class="btn btn-sm btn-danger "
+                (click)="cancelRequest(myRequest.requestId)"
+              >
+                <i class="bi bi-x-lg"></i>
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <nav aria-label="Books Pagination">
+      <ul class="pagination pagination-sm justify-content-center">
+        <li class="page-item" [class.disabled]="pageNumber === 0">
+          <a class="page-link" (click)="prevPage()">Previous</a>
+        </li>
+        <li
+          class="page-item"
+          *ngFor="let page of totalPagesArray"
+          [class.active]="page - 1 === pageNumber"
+        >
+          <a class="page-link" (click)="goToPage(page - 1)">{{ page }}</a>
+        </li>
+        <li class="page-item" [class.disabled]="pageNumber === totalPages - 1">
+          <a class="page-link" (click)="nextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,358 @@
+<!-- <div class="container-fluid bg-image p-1" style="background: linear-gradient(to bottom, #164863, #ffffff);">
+  <app-header></app-header>
+  <app-login-card></app-login-card>
+</div> -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Brawler:wght@400;700&family=Jockey+One&family=Readex+Pro:wght@160..700&display=swap"
+  rel="stylesheet"
+/>
+<div class="contianer-fluid bg-light p-2">
+  <div class="row h-100 m-4 w-90">
+    <div class="col-3 h-100">
+      <!-- <h1>Hello</h1> -->
+      <img
+        src="../assets/images/reg-logo.png"
+        class="img-fluid rounded-4 img"
+      />
+    </div>
+    <div class="col-9">
+
+      <div
+        class="ms-2 w-90 main rounded-4 d-flex justify-content-center align-items-center"
+      >
+        <div
+          class="signup-container rounded-4 p-2 mt-3"
+          *ngIf="formType === 'signup'"
+        >
+          <form
+            [formGroup]="signUpForm"
+            (ngSubmit)="onSignUp()"
+            class="form rounded-4"
+          >
+            <h3 class="header">Sign Up</h3>
+            <div class="group mt-2">
+              <input
+                formControlName="username"
+                placeholder="Username"
+                class="rounded-4"
+              />
+              <div
+                *ngIf="
+                  signUpForm.controls['username'].invalid &&
+                  signUpForm.controls['username']?.touched
+                "
+                class="text-danger"
+              >
+                <p
+                  id="msg"
+                  *ngIf="signUpForm.get('username')?.errors?.['required']"
+                >
+                  Username is required
+                </p>
+                <p
+                  id="msg"
+                  *ngIf="signUpForm.get('username')?.errors?.['pattern']"
+                >
+                  Invalid username format
+                </p>
+              </div>
+            </div>
+            <div class="group">
+              <input
+                formControlName="name"
+                placeholder="Name"
+                class="rounded-4"
+              />
+              <div
+                *ngIf="
+                  signUpForm.controls['name'].invalid &&
+                  signUpForm.controls['name']?.touched
+                "
+                class="text-danger"
+              >
+                <p
+                  id="msg"
+                  *ngIf="signUpForm.get('name')?.errors?.['required']"
+                >
+                  Name is required
+                </p>
+                <p id="msg" *ngIf="signUpForm.get('name')?.errors?.['pattern']">
+                  Name should be betwwen 3-30 charcters
+                </p>
+              </div>
+            </div>
+            <div class="group">
+              <input
+                formControlName="email"
+                placeholder="Email"
+                class="rounded-4"
+              />
+              <div
+                *ngIf="
+                  signUpForm.controls['email'].invalid &&
+                  signUpForm.controls['email']?.touched
+                "
+                class="text-danger"
+              >
+                <p
+                  id="msg"
+                  *ngIf="signUpForm.get('email')?.errors?.['required']"
+                >
+                  Email is required
+                </p>
+                <p id="msg" *ngIf="signUpForm.get('email')?.errors?.['pattern']">
+                  Invalid email format
+                </p>
+              </div>
+            </div>
+            <div class="group">
+              <input
+                formControlName="password"
+                placeholder="Password"
+                type="password"
+                class="rounded-4"
+              />
+              <div
+                *ngIf="
+                  signUpForm.controls['password'].invalid &&
+                  signUpForm.controls['password']?.touched
+                "
+                class="text-danger"
+              >
+                <p
+                  id="msg"
+                  *ngIf="signUpForm.get('password')?.errors?.['required']"
+                >
+                  Password is required
+                </p>
+                <p
+                  id="msg-pas"
+                  *ngIf="signUpForm.get('password')?.errors?.['pattern']"
+                >
+                  Password must be between 8-20 characters long and contain Uppercase, Lowercase, Number and Special character
+                </p>
+
+                <!-- <p id="msg" **ngIf="signUpForm.get('password')?.errors?.['minLength']">
+                  Password is required
+                </p> -->
+              </div>
+            </div>
+            <div class="group">
+              <input
+                formControlName="mobileNo"
+                placeholder="Mobile No"
+                type="text"
+                required
+                class="rounded-4"
+              />
+              <div
+                *ngIf="
+                  signUpForm.get('mobileNo')?.invalid &&
+                  signUpForm.get('mobileNo')?.touched
+                "
+                class="text-danger"
+              >
+                <p
+                  id="msg"
+                  *ngIf="signUpForm.get('mobileNo')?.errors?.['required']"
+                >
+                  Mobile Number is required.
+                </p>
+                <p
+                  id="msg"
+                  *ngIf="signUpForm.get('mobileNo')?.errors?.['pattern']"
+                >
+                  Invalid Mobile number format.
+                </p>
+              </div>
+            </div>
+            <div class="group">
+              <input
+                formControlName="address"
+                placeholder="Address"
+                type="text"
+                class="rounded-4"
+              />
+              <div
+                *ngIf="
+                  !signUpForm.controls['address'].valid &&
+                  signUpForm.controls['address']?.touched
+                "
+                class="text-danger"
+              >
+                <p
+                  id="msg"
+                  *ngIf="signUpForm.get('address')?.errors?.['required']"
+                >
+                  Address is required
+                </p>
+                <p
+                  id="msg"
+                  *ngIf="signUpForm.get('address')?.errors?.['pattern']"
+                >
+                  Address should be between 3-50 characters
+                </p>
+              </div>
+            </div>
+            <button
+              class="mt-2 btn btn-lg btn-submits btn-rounded"
+              [disabled]="!signUpForm.valid"
+              type="submit"
+            >
+              Submit
+            </button>
+            <!-- <div class="input-group input-group-lg rounded-3">
+              <input formControlName="username"  placeholder="Username" />
+            </div>
+            <span class="text-muted" *ngIf="!signUpForm.controls['username'].valid &&
+                 signUpForm.controls['username']?.touched" class="text-danger" >
+              Username must be atleast 4 characters long
+            </span>
+            <div class="input-group input-group-lg rounded-3">
+              <input formControlName="name"  placeholder="Name" />
+            </div>
+            <span class="text-muted" *ngIf="!signUpForm.controls['name'].valid &&
+                 signUpForm.controls['name']?.touched" class="text-danger" >
+              Name required
+            </span>
+            <div class="input-group input-group-lg rounded-3">
+              <input
+                formControlName="password"
+                placeholder="Password"
+                type="password"
+
+              />
+            </div>
+            <span class="text-muted" *ngIf="!signUpForm.controls['password'].valid &&
+                 signUpForm.controls['password']?.touched" class="text-danger" >
+              Password must be within 8-20 characters
+            </span>
+            <div class="input-group input-group-lg rounded-3">
+              <input
+                formControlName="mobileNo"
+                placeholder="Mobile No"
+                type="number"
+
+              />
+            </div>
+            <span class="text-muted" *ngIf="!signUpForm.controls['mobileNo'].valid &&
+                 signUpForm.controls['mobileNo']?.touched" class="text-danger" >
+              Mobile no must be 10 digits long
+            </span>
+            <div class="input-group input-group-lg rounded-3">
+              <input
+                formControlName="address"
+                placeholder="Address"
+                type="text"
+
+              />
+            </div>
+            <span class="text-muted" *ngIf="!signUpForm.controls['address'].valid &&
+                 signUpForm.controls['address']?.touched" class="text-danger" >
+              Address Required
+            </span>
+
+            <button class="mt-4 btn  btn-submit btn-rounded" [disabled]="!signUpForm.valid" type="submit">Submit</button> -->
+          </form>
+          <div class="mt-4">
+            <p id="footers">
+              Already have an account switch to
+              <a (click)="switchForm('login')"><u>Login</u></a>
+            </p>
+          </div>
+        </div>
+        <!--login-->
+        <div
+          class="login-container rounded-4 p-2 mt-3"
+          *ngIf="formType === 'login'"
+        >
+          <form
+            [formGroup]="loginForm"
+            (ngSubmit)="onLogin()"
+            class="form rounded-4"
+          >
+            <h3 class="headerl">Login</h3>
+
+            <div class="group-input">
+              <input
+                formControlName="username"
+                placeholder="Username"
+                class="rounded-4"
+              />
+              <div
+                *ngIf="
+                  loginForm.controls['username'].invalid &&
+                  loginForm.controls['username']?.touched
+                "
+                class="text-danger"
+              >
+                <p
+                  id="msg"
+                  *ngIf="loginForm.get('username')?.errors?.['required']"
+                >
+                  Username is required
+                </p>
+
+                <p
+                  id="msg"
+                  *ngIf="loginForm.get('username')?.errors?.['pattern']"
+                >
+                  Invalid username format
+                </p>
+              </div>
+            </div>
+            <div class="group-input">
+              <input
+                formControlName="password"
+                placeholder="Password"
+                type="password"
+                class="rounded-4"
+              />
+              <div
+                *ngIf="
+                  loginForm.controls['password'].invalid &&
+                  loginForm.controls['password']?.touched
+                "
+                class="text-danger"
+              >
+                <p
+                  id="msg"
+                  *ngIf="loginForm.get('password')?.errors?.['required']"
+                >
+                  Password is required
+                </p>
+                <p
+                  id="msg"
+                  *ngIf="loginForm.get('password')?.errors?.['pattern']"
+                >
+                  Password must be between 8-20 characters
+                </p>
+              </div>
+            </div>
+
+            <button
+              class="mt-4 btn btn-lg btn-submit rounded-3"
+              [disabled]="!loginForm.valid"
+              type="submit"
+            >
+              Submit
+            </button>
+          </form>
+          <div class="mt-4 p-2">
+            <p id="footer-p">
+              <a (click) = "goToForgotPassword()"
+                ><u>Forgot Password?</u></a
+              >
+            </p>
+            <p id="footer-l">
+              New user, switch to
+              <a (click)="switchForm('signup')"><u>Signup</u></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

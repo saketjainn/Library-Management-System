@@ -1,0 +1,117 @@
+<div *ngIf="!showEmpty" class="rounded-4 content">
+  <!-- <div *ngIf="genreLabels.length == 0">
+    <h1>No data</h1>
+  </div>
+  <div *ngIf="genreLabels.length > 0 ">
+    <h1>No data</h1>
+  </div> -->
+  <div class="up">
+    <div class="stats">
+      <div class="notifications">
+        <div class="stat">
+          <h4>New Arrivals</h4>
+
+          <button
+            class="btn btn-lg btn-warning"
+            (click)="openNewArrivalsModal()"
+          >
+            <i class="bi bi-bell-fill"></i>
+          </button>
+        </div>
+      </div>
+      <div class="borrowed-books">
+        <div class="stat">
+          <h4>Borrowed Books</h4>
+          <h4>(Active)</h4>
+          <h4>{{ totalBorrowedBooks }}</h4>
+        </div>
+      </div>
+      <div class="fine-amount-due">
+        <div class="stat">
+          <h4>Total Fine Due</h4>
+          <h4>{{ totalFineDue }}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="fav-books">
+      <canvas id="user-fav-books"></canvas>
+    </div>
+
+    <div class="fav-genre-split card">
+      <canvas id="user-genre-pie"></canvas>
+    </div>
+  </div>
+  <div class="down">
+    <div class="fav-authors">
+      <canvas id="user-fav-authors"></canvas>
+    </div>
+    <div class="reports">
+      <div class="dropdown-button">
+        <div class="dropdown">
+          <select
+            name="report"
+            id="report"
+            [(ngModel)]="selectedReport"
+            (ngModelChange)="datePicker()"
+          >
+            <option value="">Select Report</option>
+            <option value="BookCollectionReport">Book Collection Report</option>
+            <option value="UserBookIssuanceSummary">
+              User Book Issuance Report
+            </option>
+            <option value="UserRequestSummary">User Request Report</option>
+          </select>
+          <button
+            class="btn btn-primary rounded-4"
+            id="report-btn"
+            (click)="helper()"
+            placement="bottom"
+            [ngbTooltip]="tooltipsMessage"
+          >
+            Generate
+          </button>
+        </div>
+      </div>
+      <div class="date-picker">
+        <div *ngIf="showDatePicker" id="dates">
+          <div class="group">
+            <span>Start Date: </span>
+            <input
+              type="date"
+              name="start-date"
+              id="date-input"
+              placeholder="Start Date"
+              [(ngModel)]="startDate"
+              [max]="endDate"
+            />
+          </div>
+
+          <div class="group">
+            <span>End Date: </span>
+            <input
+              type="date"
+              name="end-date"
+              id="date-input"
+              placeholder="End Date"
+              [(ngModel)]="endDate"
+              [max]="endDate"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div *ngIf="showEmpty" class="content rounded-4">-->
+<!--  <div class="no-data" >-->
+<!--    <img src="../../../../../assets/images/no-data.png" alt="" class="" />-->
+
+<!--    <button-->
+<!--      class="btn btn-primary rounded-4"-->
+<!--      id="explore"-->
+<!--      (click)="gotoExploreBooks()"-->
+<!--    >-->
+<!--      Explore Books-->
+<!--    </button>-->
+<!--  </div>-->
+<!--</div>-->

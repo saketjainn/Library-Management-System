@@ -1,0 +1,48 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Brawler:wght@400;700&family=Jockey+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Readex+Pro:wght@160..700&display=swap"
+  rel="stylesheet"
+/>
+<div class="sidebar">
+  <ul>
+    <div>
+      <li
+        routerLinkActive="active-link"
+        [routerLink]="['app-user-dashboard']"
+        class=""
+      >
+        <p><i class="fa-solid fa-chart-line"></i> <span>Dashboard</span></p>
+      </li>
+      <li routerLinkActive="active-link" [routerLink]="['app-request-book']">
+        <p><i class="fa-solid fa-book-open"></i><span>Explore Books</span></p>
+      </li>
+      <li
+        routerLinkActive="active-link"
+        [routerLink]="['app-view-borrowed-books']"
+      >
+        <p><i class="fa-solid fa-cart-shopping"></i><span>Borrowed Books</span></p>
+      </li>
+      <li routerLinkActive="active-link" [routerLink]="['app-view-fines']">
+        <p><i class="fa-solid fa-coins"></i> <span>Fines</span></p>
+      </li>
+      <li routerLinkActive="active-link" [routerLink]="['app-view-my-requests']">
+        <p><i class="fa-solid fa-comment-dots"></i> <span>Requests</span></p>
+      </li>
+    </div>
+
+
+  </ul>
+
+  <div class="util">
+
+    <p  (click)="openProfile()" id="username">Hi, {{ userName }}</p>
+
+      <p><button class="btn btn-lg " (click)="openConfirmationDialog()"><i class="fa-solid fa-power-off"></i></button></p>
+
+
+    <!-- <img src="../../../assets/images/final-logo.png" alt=""> -->
+
+  </div>
+</div>
+

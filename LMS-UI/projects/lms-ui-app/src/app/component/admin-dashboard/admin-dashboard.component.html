@@ -1,0 +1,118 @@
+<div class="rounded-4 content">
+  <div class="up">
+    <div class="stats">
+      <div class="books">
+        <div class="stat">
+          <h3>Total Books</h3>
+          <h4>{{ totalNoOfBooks }}</h4>
+          <!-- <strong><i class="bi bi-book"></i></strong> -->
+        </div>
+      </div>
+      <div class="users">
+        <div class="stat">
+          <h3>Total Users</h3>
+          <h4>{{ totalNoOfUsers }}</h4>
+        </div>
+      </div>
+      <!-- <div class="fine">
+        <div class="stat">
+          <p>Total Fines Paid / Total Fines Due </p>
+          <p>{{toalFinePaid}} / {{totalFineDue}} </p>
+
+        </div>
+      </div> -->
+    </div>
+
+    <div class="top-authors">
+      <!-- <canvas id="fine-pie"></canvas> -->
+      <canvas id="top-authors-bar"></canvas>
+    </div>
+    <div class="genre">
+      <canvas id="genre-pie"></canvas>
+    </div>
+  </div>
+  <div class="down">
+    <div class="top-books">
+      <canvas id="top-books-bar"></canvas>
+    </div>
+    <div class="reports">
+      <div class="dropdown-button">
+        <div class="dropdown">
+          <select
+            name="report"
+            id="report"
+            [(ngModel)]="selectedReport"
+            (ngModelChange)="datePicker()"
+          >
+            <option value="">Select Report</option>
+            <option value="AllUserDataReport">All User Data Report</option>
+            <option value="AllPublisherDataReport">
+              All Publisher Data Report
+            </option>
+            <option value="BookCollectionReport">Book Collection Report</option>
+            <option value="FineSummaryReport">Fine Summary Report</option>
+            <option value="BookIssuanceSummary">
+              Book Issuance Summary Report
+            </option>
+            <option value="BookReturnSummary">
+              Book Return Summary Report
+            </option>
+            <option value="BookRequestReport">
+              Book Request Summary Report
+            </option>
+          </select>
+          <!-- <button
+            class="btn btn-primary rounded-4"
+            id="report-btn"
+            (click)="helper()"
+            [disabled]="
+              (selectedReport == 'BookCollectionReport' && (startDate == null || endDate == null)) ||
+              (selectedReport == 'BookIssuanceSummary' && (startDate == null || endDate == null)) ||
+              (selectedReport == 'BookReturnSummary' && (startDate == null || endDate == null)) ||
+              (selectedReport == 'BookRequestReport' && (startDate == null || endDate == null)) ||
+              (selectedReport == '')
+            "
+          >
+            Generate -->
+          <!-- </button> -->
+          <button
+            class="btn btn-primary rounded-4"
+            id="report-btn"
+            (click)="helper()"
+            placement="bottom"
+            [ngbTooltip]="tooltipsMessage"
+          >
+            Generate
+          </button>
+        </div>
+      </div>
+      <div class="date-picker">
+        <div *ngIf="showDatePicker" id="dates">
+          <div class="group">
+            <span>Start Date: </span>
+            <input
+              type="date"
+              name="start-date"
+              id="date-input"
+              placeholder="Start Date"
+              [(ngModel)]="startDate"
+              [max]="endDate"
+            />
+          </div>
+
+          <div class="group">
+            <span>End Date: </span>
+            <input
+              type="date"
+              name="end-date"
+              id="date-input"
+              placeholder="End Date"
+              [(ngModel)]="endDate"
+              [max]="endDate"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
